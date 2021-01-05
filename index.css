@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+:root {
+    --main-red: #f7e1e1;
+    --white: #f2f2f2;
+    --black: #000000;
+  }
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+body, html {
+    background-color: var(--black);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    height: 100%;
+}
+
+nav {
+    /* border-bottom: 2px solid var(--main-red); */
+    padding: .5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50; /* needed for setting pseudo-element z-index */
+    backface-visibility: hidden;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+a::before,
+a::after {
+    pointer-events: none;
+    backface-visibility: hidden;
+}
+
+.text-red {
+  color: var(--main-red);
+}
+
+.font-lg{
+  font-size: 50px;
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.menu {
+  overflow: hidden;
+}
+
+.menu a {
+  color: var(--main-red);
+  overflow: hidden;
+  font-weight: 500;
+  padding: 1rem .5rem;
+  transition: all 0.2s;
+}
+
+.menu a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-red);
+  content: '';
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.menu a:hover::before,
+.menu a:focus::before {
+	-webkit-transform: translateY(0);
+    transform: translateY(0);   
+}
+
+.menu a:hover {
+    color: var(--black);
+}
+  
+.menu .icon {
+display: none;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+    padding: 1rem;
+    
+    margin-bottom: 5rem;
+    /* background-clip: content-box; */
+}
+
+main {
+  /* height: 100vh; */
+  background: url(assets/conifer-443.png), url(assets/hugo-258.png), url(assets/huo-258.png), url(assets/confer-443.png);
+  background-position: left top, right bottom, right bottom, left bottom;
+  backdrop-filter: blur(80%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.intro {
+  text-align: center;
+}
+
+.intro h1{
+  font-size: 5.5rem;
+}
+.intro h5{
+  font-size: 2rem;
+}
+.intro a{
+  color: var(--black);
+  padding: .8rem;
+  background-color: var(--main-red);
+  border-radius: 5px;
+}
+
+.right-img {
+  text-align: center;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding: 3rem;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+.about-content h3 {
+  font-size: 2.5rem;
+  line-height: 5px;
+}
+
+.about-content p {
+  font-size: 1rem;
+}
+
+.about-img {
+  text-align: center;
+  height: 250px;
+  width: 100%;
+  margin: auto;
+  /* background: url("https://source.unsplash.com/L8KQIPCODV8") no-repeat; */
+  background: url("assets/me.png") no-repeat;
+  background-size: cover;
+}
+
+.works {
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding: 3rem;
+  width: 70%;
+  margin: auto;
+}
+
+.works h3 {
+  font-size: 2.5rem;
+  line-height: 5px;
+}
+
+.works-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* 
+***
+****  MEDIA QUERIES
+
+        * *   * *   * * * *     * *       * * * *       *               ***************************************************************************************************************
+        * * * * *   *           *   *       * *        * *              ***************************************************************************************************************
+        * *   * *   * * * *     *   *       * *       *   *             ***************************************************************************************************************
+        * *   * *   *           *  *        * *      *  *  *            ***************************************************************************************************************
+        * *   * *   * * * *     * *       * * * *   *       *           ***************************************************************************************************************
+**
+*/
+
+  @media screen and (max-width: 600px) {
+    .menu a {display: none;}
+    .menu a.icon {
+      float: right;
+      display: block;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    main {
+      background: url(assets/conifer-443.png), url(assets/huo-258.png), url(assets/confer-443.png);
+      background-position: left top, right bottom, right bottom, left bottom;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .intro h1{
+      font-size: 4rem;
+      padding-top: 4rem;
+    }
+    .intro h5{
+      font-size: 1.5rem;
+    }
+    .about {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    .menu.responsive {position: relative;}
+    .menu.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .menu.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
